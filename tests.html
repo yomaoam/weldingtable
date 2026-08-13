@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="dark light">
+<title>Tests — Welding Table Angle Finder</title>
+<link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+<header class="top">
+  <h1>Acceptance tests</h1>
+  <p class="tagline">Section 8 of the brief, verified independently.</p>
+</header>
+<main>
+  <div class="card">
+    <p class="score" id="score">running…</p>
+    <ul class="test-list" id="list"></ul>
+  </div>
+  <p class="hint">Same assertions run headless with <code>node run-tests.js</code>.</p>
+  <p class="hint"><a href="./index.html">← back to the app</a></p>
+</main>
+<script src="./grid-math.js"></script>
+<script src="./tests.js"></script>
+<script>
+(function () {
+  var out = WeldTests.run();
+  var score = document.getElementById('score');
+  score.textContent = out.passed + ' passed, ' + out.failed + ' failed';
+  score.className = 'score ' + (out.failed ? 'no' : 'ok');
+  document.getElementById('list').innerHTML = out.results.map(function (r) {
+    return '<li class="' + (r.pass ? 'pass' : 'fail') + '">' +
+      '<span class="mark">' + (r.pass ? '✓' : '✕') + '</span>' +
+      '<span>' + r.name.replace(/&/g, '&amp;').replace(/</g, '&lt;') + '</span>' +
+      (r.detail ? '<span class="detail">' + String(r.detail).replace(/</g, '&lt;') + '</span>' : '') +
+      '</li>';
+  }).join('');
+  console.log(out.passed + ' passed, ' + out.failed + ' failed');
+  out.results.forEach(function (r) { if (!r.pass) console.error('FAIL: ' + r.name + '  ' + r.detail); });
+})();
+</script>
+</body>
+</html>

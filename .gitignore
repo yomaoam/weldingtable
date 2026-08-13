@@ -16,3 +16,12 @@ _site/
 # counterproductive to check this file into the repository.
 # Details at https://github.com/github/pages-gem/issues/768
 Gemfile.lock
+
+# Private / internal docs that must never be committed to a public repo.
+# These are copied in locally for reference only; the canonical copies live
+# outside the repo. If one appears here it stays untracked by design.
+BUILD-STANDARDS.md
+**/BUILD-STANDARDS.md
+AGENTS-template.md
+RELEASE-READINESS.md
+LOCAL-DEV.md

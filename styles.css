@@ -1,0 +1,295 @@
+/* =============================================================================
+   Welding Table Angle Finder — workshop-first styling.
+   Assume: phone in one hand, gloves on, poor light, dirty screen.
+   Big targets, big numerals, hard contrast, dark by default.
+   No external fonts — system stack only.
+   ============================================================================= */
+
+:root {
+  --bg:        #0c0e11;
+  --card:      #14181d;
+  --card-2:    #1b2027;
+  --line:      #2b323b;
+  --ink:       #f2f5f8;
+  --ink-dim:   #a6b0bc;
+  --accent:    #ffb020;   /* the setup line — reads well in bad light */
+  --accent-2:  #ffcf6b;
+  --good:      #3ddc84;
+  --warn:      #ff8a3d;
+  --bad:       #ff5a5a;
+  --radius:    14px;
+  --tap:       48px;      /* minimum tap target, gloves on */
+}
+
+* { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  padding: 0 0 env(safe-area-inset-bottom);
+  background: var(--bg);
+  color: var(--ink);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-size: 17px;
+  line-height: 1.45;
+  -webkit-tap-highlight-color: transparent;
+}
+
+main { max-width: 620px; margin: 0 auto; padding: 0 14px 40px; }
+
+/* --- header ------------------------------------------------------------- */
+.top {
+  max-width: 620px;
+  margin: 0 auto;
+  padding: 18px 14px 10px;
+}
+.top h1 {
+  margin: 0;
+  font-size: 1.35rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  font-weight: 800;
+}
+.tagline { margin: 2px 0 0; color: var(--ink-dim); font-size: 0.95rem; }
+
+/* --- cards -------------------------------------------------------------- */
+.card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 14px;
+  margin: 0 0 12px;
+}
+.card-head {
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 10px; margin-bottom: 10px;
+}
+h2 { font-size: 0.95rem; margin: 0; letter-spacing: 0.05em; text-transform: uppercase; color: var(--ink-dim); font-weight: 700; }
+
+/* --- inputs ------------------------------------------------------------- */
+.field-label {
+  display: block;
+  font-size: 0.8rem;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: var(--ink-dim);
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+.field { margin-bottom: 14px; }
+.field:last-of-type { margin-bottom: 0; }
+
+input, select, button {
+  font-family: inherit;
+  font-size: 1.05rem;
+  color: var(--ink);
+  background: var(--card-2);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  min-height: var(--tap);
+  padding: 8px 12px;
+  width: 100%;
+}
+select {
+  appearance: none;
+  background-image: linear-gradient(45deg, transparent 50%, var(--ink-dim) 50%),
+                    linear-gradient(135deg, var(--ink-dim) 50%, transparent 50%);
+  background-position: right 18px center, right 12px center;
+  background-size: 6px 6px, 6px 6px;
+  background-repeat: no-repeat;
+  padding-right: 34px;
+}
+input:focus-visible, select:focus-visible, button:focus-visible, summary:focus-visible {
+  outline: 3px solid var(--accent); outline-offset: 2px;
+}
+input[type="number"] { -moz-appearance: textfield; }
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
+
+.angle-row { display: flex; align-items: center; gap: 8px; }
+.angle-input {
+  font-size: 3.2rem;
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.02em;
+  padding: 4px 12px;
+  min-height: 72px;
+  text-align: center;
+}
+.deg-mark { font-size: 2.4rem; color: var(--ink-dim); font-weight: 700; }
+
+.nudge { display: flex; gap: 8px; margin-top: 10px; }
+.nudge button { font-weight: 700; font-variant-numeric: tabular-nums; }
+.nudge button:active { background: var(--accent); color: #000; border-color: var(--accent); }
+
+.two-up { display: flex; align-items: center; gap: 8px; }
+.by { color: var(--ink-dim); font-size: 1.2rem; }
+
+.check {
+  display: flex; align-items: center; gap: 10px;
+  margin-top: 14px; min-height: var(--tap); cursor: pointer;
+}
+.check input { width: 26px; height: 26px; min-height: 0; flex: none; accent-color: var(--accent); }
+.check span { font-size: 0.95rem; color: var(--ink-dim); }
+
+.hint { margin: 8px 0 0; font-size: 0.85rem; color: var(--ink-dim); }
+
+/* --- the answer --------------------------------------------------------- */
+.answer {
+  background: linear-gradient(180deg, #1a1f26, #14181d);
+  border: 1px solid #39424e;
+  border-radius: var(--radius);
+  padding: 16px 14px;
+  margin: 0 0 12px;
+}
+.answer .kicker {
+  font-size: 0.78rem; letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--ink-dim); font-weight: 700; margin: 0 0 10px;
+}
+.numbers {
+  display: flex; align-items: stretch; gap: 10px;
+}
+.num {
+  flex: 1 1 0;
+  background: #0e1116;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 10px 6px 8px;
+  text-align: center;
+}
+.num .n {
+  display: block;
+  font-size: 4.2rem;
+  line-height: 1;
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+  color: var(--accent);
+  letter-spacing: -0.03em;
+}
+.num .lbl {
+  display: block; margin-top: 4px;
+  font-size: 0.8rem; letter-spacing: 0.16em; text-transform: uppercase;
+  color: var(--ink); font-weight: 700;
+}
+.num .mm { display: block; font-size: 0.85rem; color: var(--ink-dim); font-variant-numeric: tabular-nums; }
+
+.headline-error {
+  margin: 14px 0 0;
+  font-size: 1.3rem;
+  font-weight: 700;
+  line-height: 1.25;
+}
+.headline-error .mmval { color: var(--good); font-variant-numeric: tabular-nums; }
+.headline-error.is-warn .mmval { color: var(--warn); }
+.headline-error.is-bad .mmval { color: var(--bad); }
+.answer .secondary {
+  margin: 6px 0 0; color: var(--ink-dim); font-size: 0.95rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.badges { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+.badge {
+  font-size: 0.82rem; font-weight: 700;
+  padding: 7px 10px; border-radius: 999px;
+  background: var(--card-2); border: 1px solid var(--line); color: var(--ink-dim);
+}
+.badge.exact { background: rgba(61,220,132,0.12); border-color: rgba(61,220,132,0.45); color: var(--good); }
+.badge.rot   { background: rgba(255,176,32,0.12); border-color: rgba(255,176,32,0.45); color: var(--accent-2); }
+
+/* --- warnings ----------------------------------------------------------- */
+.warn, .info {
+  border-radius: var(--radius);
+  padding: 12px 14px;
+  margin: 0 0 12px;
+  font-size: 0.95rem;
+  border: 1px solid;
+}
+.warn { background: rgba(255,138,61,0.10); border-color: rgba(255,138,61,0.5); color: #ffd3b3; }
+.warn.bad { background: rgba(255,90,90,0.10); border-color: rgba(255,90,90,0.5); color: #ffc9c9; }
+.info { background: var(--card); border-color: var(--line); color: var(--ink-dim); }
+.warn strong, .info strong { color: var(--ink); }
+
+/* --- diagram ------------------------------------------------------------ */
+.diagram { text-align: center; }
+.diagram svg {
+  width: 100%;
+  max-height: 58vh;
+  height: auto;
+  display: block;
+  background: #0a0c0f;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+}
+.flips { display: flex; gap: 8px; flex: none; }
+.flips button { width: auto; padding: 8px 12px; font-size: 0.9rem; font-weight: 700; min-height: 42px; }
+.flips button[aria-pressed="true"] { background: var(--accent); color: #000; border-color: var(--accent); }
+
+/* --- ladder tables ------------------------------------------------------ */
+details.card > summary {
+  list-style: none;
+  cursor: pointer;
+  display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap;
+  min-height: 32px;
+}
+details.card > summary::-webkit-details-marker { display: none; }
+details.card > summary::after {
+  content: "▸"; margin-left: auto; color: var(--ink-dim); font-size: 1.1rem;
+}
+details.card[open] > summary::after { content: "▾"; }
+.summary-note { font-size: 0.85rem; color: var(--ink-dim); }
+
+.table-scroll { overflow-x: auto; margin-top: 12px; -webkit-overflow-scrolling: touch; }
+table.ladder { border-collapse: collapse; width: 100%; font-size: 0.92rem; }
+table.ladder th, table.ladder td {
+  text-align: right; padding: 9px 8px; border-bottom: 1px solid var(--line);
+  white-space: nowrap; font-variant-numeric: tabular-nums;
+}
+table.ladder th { color: var(--ink-dim); font-size: 0.75rem; letter-spacing: 0.06em; text-transform: uppercase; }
+table.ladder td:first-child, table.ladder th:first-child { text-align: left; }
+table.ladder tr.is-best td { color: var(--accent); font-weight: 700; }
+table.ladder .pair { font-weight: 700; font-size: 1rem; }
+table.ladder .tick { color: var(--good); }
+
+/* --- permanent honesty note --------------------------------------------- */
+.noise-floor {
+  margin: 16px 0 0;
+  padding: 12px 14px;
+  border-left: 3px solid var(--ink-dim);
+  background: var(--card);
+  border-radius: 0 var(--radius) var(--radius) 0;
+  color: var(--ink-dim);
+  font-size: 0.88rem;
+}
+.noise-floor strong { display: block; color: var(--ink); margin-bottom: 4px; }
+
+/* --- footer ------------------------------------------------------------- */
+.foot {
+  max-width: 620px; margin: 0 auto; padding: 0 14px 28px;
+  display: flex; justify-content: space-between; gap: 12px;
+  color: var(--ink-dim); font-size: 0.8rem;
+}
+.foot a { color: var(--ink-dim); }
+
+/* --- test page ---------------------------------------------------------- */
+.test-list { list-style: none; padding: 0; margin: 0; font-size: 0.9rem; }
+.test-list li { padding: 7px 0; border-bottom: 1px solid var(--line); display: flex; gap: 10px; }
+.test-list .mark { flex: none; font-weight: 800; }
+.test-list .pass .mark { color: var(--good); }
+.test-list .fail .mark { color: var(--bad); }
+.test-list .detail { color: var(--ink-dim); margin-left: auto; text-align: right; font-variant-numeric: tabular-nums; }
+.score { font-size: 1.4rem; font-weight: 800; margin: 0 0 12px; }
+.score.ok { color: var(--good); }
+.score.no { color: var(--bad); }
+
+/* --- light mode: only if explicitly preferred; workshop default is dark -- */
+@media (prefers-color-scheme: light) {
+  :root {
+    --bg: #f4f6f8; --card: #ffffff; --card-2: #eef1f4; --line: #c9d1da;
+    --ink: #10151b; --ink-dim: #4a5560; --accent: #a35b00; --accent-2: #7a4400;
+    --good: #0d7a3d; --warn: #a54b00; --bad: #b3231f;
+  }
+  .answer { background: #ffffff; border-color: var(--line); }
+  .num { background: #f7f9fb; }
+  .diagram svg { background: #ffffff; }
+}

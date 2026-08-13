@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512" role="img" aria-label="Welding Table Angle Finder">
+  <rect width="512" height="512" fill="#0c0e11"/>
+  <g fill="#5b6773">
+    <circle cx="128" cy="128" r="12"/><circle cx="192" cy="128" r="12"/><circle cx="256" cy="128" r="12"/><circle cx="320" cy="128" r="12"/><circle cx="384" cy="128" r="12"/>
+    <circle cx="128" cy="192" r="12"/><circle cx="192" cy="192" r="12"/><circle cx="256" cy="192" r="12"/><circle cx="320" cy="192" r="12"/><circle cx="384" cy="192" r="12"/>
+    <circle cx="128" cy="256" r="12"/><circle cx="192" cy="256" r="12"/><circle cx="256" cy="256" r="12"/><circle cx="320" cy="256" r="12"/><circle cx="384" cy="256" r="12"/>
+    <circle cx="128" cy="320" r="12"/><circle cx="192" cy="320" r="12"/><circle cx="256" cy="320" r="12"/><circle cx="320" cy="320" r="12"/><circle cx="384" cy="320" r="12"/>
+    <circle cx="128" cy="384" r="12"/><circle cx="192" cy="384" r="12"/><circle cx="256" cy="384" r="12"/><circle cx="320" cy="384" r="12"/><circle cx="384" cy="384" r="12"/>
+  </g>
+  <line x1="128" y1="384" x2="384" y2="256" stroke="#ffb020" stroke-width="26" stroke-linecap="round"/>
+  <circle cx="128" cy="384" r="34" fill="#ffb020"/>
+  <circle cx="384" cy="256" r="34" fill="#0c0e11" stroke="#ffb020" stroke-width="12"/>
+</svg>
