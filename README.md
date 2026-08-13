@@ -13,6 +13,48 @@ a 600 mm part — better than a protractor and repeatable to the hole.
 Open [`index.html`](./index.html). That's it. No build step, no install, no accounts,
 no network calls at any point.
 
+## In plain language
+
+*(No welding or maths knowledge needed.)*
+
+**The setting.** A welding table is a heavy steel workbench with a neat grid of evenly
+spaced holes across its top — like a giant sheet of graph paper made of steel. Welders
+drop metal pins into those holes and push their workpiece up against them to hold it
+still, the same way pegs hold things on a pegboard.
+
+**The problem.** Say you want to weld two pieces together at a specific slant — 20
+degrees, say. You'd hold the metal against two pins, and the line between those pins
+sets the angle. But you can only put a pin where there's already a hole. You can't
+drill a new one wherever you like. So the only angles the table can actually make are
+the lines you can draw between two existing holes — and most "perfect" angles fall
+between the holes, so you can only get *close*.
+
+**The old way.** A welder grabs a protractor, eyeballs the angle, and nudges the metal
+until it looks about right. It's slow, imprecise, and hard to reproduce tomorrow.
+
+**What this does instead.** You type in the angle you want and pick which table you
+have. The app quietly tries every combination of "go this many holes across and this
+many holes up," works out the slant each one gives, and picks the closest. Then it
+tells you in plain terms: for 20°, **"11 across, 4 up."** Count 11 holes to the side, 4
+holes up, drop your pins in those two spots — done. Because the holes never move, you
+get the exact same setup every time.
+
+**The honest part.** The angle won't be *exactly* 20° — it'll be 19.983°, because
+you're stuck with the holes you have. Instead of quoting a scary-looking decimal, the
+app translates that into something you can picture: **"0.18 mm out at the end of a
+600 mm part."** Over a piece of metal about 60 cm long, the far end is off by less than
+the thickness of a couple of sheets of paper — far better than a protractor. And when
+an angle genuinely *can't* be held well, the app says so and points you to a nearby
+angle it can nail perfectly, rather than pretending.
+
+**The picture.** It also draws the holes as dots, marks your two pins, and prints
+numbers along the edges so you can count along with your finger — gloves on, in a dim
+workshop. Flip buttons let you match whichever corner of the table you're working from.
+
+**In one sentence:** you want a precise angle; the table can only make certain angles
+because you can only pin where the holes are; this app tells you which two holes get
+you closest, and honestly shows how close in millimetres you'd actually feel.
+
 ## What it does
 
 - Brute-forces every `(run, rise)` pair that fits your table, filtered by what the
