@@ -2,6 +2,8 @@
 
 **Which two holes do I pin?**
 
+**[Live app → yomaoam.github.io/weldingtable](https://yomaoam.github.io/weldingtable/)**
+
 A modular welding table is a steel slab with a precise grid of holes. You can only
 pin where there is a hole, so **any straight edge you set up on the table runs
 between two grid points** — which means the only angles the table can physically
