@@ -20,10 +20,11 @@ install, no framework, ever. That constraint is the product, not an accident.
 
 ## Never do these
 
-- **Never merge into `main`, force-push, rewrite pushed history, or delete a
-  branch without Andy's go-ahead.** Otherwise the agent handles git: a branch
-  per non-trivial change, one Conventional Commit per logical change, push,
-  and a PR via `gh`.
+- **Never force-push, rewrite pushed history, or delete a branch (other than
+  a PR branch you just merged) without Andy's go-ahead.** Otherwise the agent
+  handles git: a branch per non-trivial change, one Conventional Commit per
+  logical change, push, a PR via `gh`, and merging that PR once its checks
+  pass.
 - **Never add a build step, bundler, framework, or npm dependency.** There is no
   `package.json` and there should not be one. The app loads three plain `<script>`
   tags. Node is used only to run the tests headlessly (`node run-tests.js`) and has
