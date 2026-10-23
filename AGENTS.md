@@ -5,6 +5,12 @@ Code, anything else). If this file and your own judgement disagree, this file wi
 If a rule blocks you, **stop and ask** — never mock data, weaken a check, or work
 around a blocker silently. Broader reasoning lives in [README.md](./README.md).
 
+This project follows Andy's build standards, `~/.claude/BUILD-STANDARDS.md`
+on the Mac mini where all sessions run. This file holds the project's own
+rules and wins where it is more specific.
+Not applicable here, by design: databases, secrets, dependencies and CI
+(standards D1 to D5); the app has no backend, no network and no packages.
+
 ## What this project is
 
 A single-page, zero-build, fully-offline tool that turns a target angle into which
@@ -14,8 +20,10 @@ install, no framework, ever. That constraint is the product, not an accident.
 
 ## Never do these
 
-- **Never run `git commit` or `git push`.** Leave changes in the working tree and
-  hand over a ready-to-paste commit message. The maintainer commits.
+- **Never merge into `main`, force-push, rewrite pushed history, or delete a
+  branch without Andy's go-ahead.** Otherwise the agent handles git: a branch
+  per non-trivial change, one Conventional Commit per logical change, push,
+  and a PR via `gh`.
 - **Never add a build step, bundler, framework, or npm dependency.** There is no
   `package.json` and there should not be one. The app loads three plain `<script>`
   tags. Node is used only to run the tests headlessly (`node run-tests.js`) and has
@@ -100,5 +108,5 @@ out-of-scope list current as things get built.
 ## Workflow
 
 - Branch per non-trivial change. One coherent, committable piece at a time that
-  leaves the tests green and the app working from `file://`. Stop after each piece
-  and hand off a commit message.
+  leaves the tests green and the app working from `file://`. Commit and push it,
+  then stop for feedback.
