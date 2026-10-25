@@ -23,8 +23,8 @@ install, no framework, ever. That constraint is the product, not an accident.
 - **Never force-push, rewrite pushed history, or delete a branch (other than
   a PR branch you just merged) without Andy's go-ahead.** Otherwise the agent
   handles git: a branch per non-trivial change, one Conventional Commit per
-  logical change, push, a PR via `gh`, and merging that PR once its checks
-  pass.
+  logical change, push, and a PR via `gh`. Andy merges into `main`: get the
+  PR green, say it's ready and move on without waiting.
 - **Never add a build step, bundler, framework, or npm dependency.** There is no
   `package.json` and there should not be one. The app loads three plain `<script>`
   tags. Node is used only to run the tests headlessly (`node run-tests.js`) and has
@@ -110,4 +110,5 @@ out-of-scope list current as things get built.
 
 - Branch per non-trivial change. One coherent, committable piece at a time that
   leaves the tests green and the app working from `file://`. Commit and push it,
-  then stop for feedback.
+  then carry on; stop only for a decision that isn't written down, a hook
+  prompt, or a blocker.
